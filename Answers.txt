@@ -1,0 +1,41 @@
+1. The mkwords 1000000 3 command produces 857424 distinct words. 
+
+What is the maximum chain length if a hash table size of 85711 is used? 25
+
+How does the chain length distribution change if the hash table size is 
+100000? 36
+214283? 16
+400000? 16
+400837? 12
+857144? 9
+857137? 9 (slightly better)
+
+
+2. 
+
+Looking at the data in questionAB.txt, it appears that the prime numbers are more efficient in
+creating more chains of shorter length (and fewer chain lengths altogether).
+
+3. We used the prime 857137 as the base for looking for a new number. We know that this number is
+too big, as there are too many chains of length 0. We also know to use prime numbers because the 
+data in questionAB.txt shows that primes are more efficient in creating a smaller distribution of
+lengths (and keeping them low). There were several prime numbers that satisfied the conditions. We
+found that the prime 641197 was one example of a number that did this.
+
+4. This tells us that the performance is heavily dependent on the hash function itself. When the 
+inputted number of slots is an optimal number, the performance is significantly better than if
+it isn't. In this case, the first number--which is not a prime--is much worse-off in terms of 
+performance than the second number, which is a prime. What's interesting is that the two numbers
+are three integers apart!
+
+5. N = 997
+   N = 10007
+   N = 100003
+   N = 1000003
+   N = 10000007
+
+After running gprof for the above N values, we noticed that the functions that took the most time
+were ListSearch and cmp. In particular, ListSearch was the most demanding by a significant amount.
+As we increased N ListSearch became less demanding altough still the most dominant. The function
+hash became slightly more demanding as N is increased.  
+
